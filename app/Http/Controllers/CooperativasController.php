@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\cooperativas;
+use App\Productores;
 use Illuminate\Http\Request;
 
 class CooperativasController extends Controller
@@ -14,21 +15,14 @@ class CooperativasController extends Controller
      */
     public function index()
     {
-        //
-        dd("coo");
+        $cooperativas = cooperativas::all();
+        return $cooperativas;
     }
 
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
+   
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,7 +30,13 @@ class CooperativasController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $cooperativa=new cooperativas();
+
+        $cooperativa->nombre = $request->nombre;
+        $cooperativa->fecha = $request->fecha;
+        $cooperativa->id_pro_lider=$request->id_pro_lider;
+
+        $cooperativa->save();
     }
 
     /**
@@ -47,18 +47,8 @@ class CooperativasController extends Controller
      */
     public function show(cooperativas $cooperativas)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  \App\cooperativas  $cooperativas
-     * @return \Illuminate\Http\Response
-     */
-    public function edit(cooperativas $cooperativas)
-    {
-        //
+        $cooperativa = cooperativas::findOrFail($cooperativas->id);
+        return $cooperativa;
     }
 
     /**
@@ -70,7 +60,13 @@ class CooperativasController extends Controller
      */
     public function update(Request $request, cooperativas $cooperativas)
     {
-        //
+        $cooperativa = cooperativas::findOrFail($cooperativas->id);
+
+        $cooperativa->nombre = $request->nombre;
+        $cooperativa->fecha = $request->fecha;
+        $cooperativa->id_pro_lider=$request->id_pro_lider;
+
+        $cooperativa->save();
     }
 
     /**
@@ -81,6 +77,7 @@ class CooperativasController extends Controller
      */
     public function destroy(cooperativas $cooperativas)
     {
-        //
+        $cooperativa=cooperativas::destroy($cooperativas->id);
+        return $cooperativa;
     }
 }

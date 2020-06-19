@@ -15,4 +15,12 @@ class Productores extends Model
         'dni',
         'id_cooperativa'
     ];
+    protected $casts = [
+        'id' => 'integer',
+        'nombre' => 'string',
+        'apellido' => 'string',
+        'direccion' => 'string',
+        'dni' => 'string',
+        'id_cooperativa' => 'integer'
+    ];
 }

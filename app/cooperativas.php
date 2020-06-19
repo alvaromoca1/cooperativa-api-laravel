@@ -13,4 +13,10 @@ class cooperativas extends Model
         'fecha',
         'id_pro_lider',
     ];
+    protected $casts = [
+        'id' => 'integer',
+        'nombre' => 'string',
+        'fecha' => 'string',
+        'id_pro_lider' => 'string'
+    ];
 }
