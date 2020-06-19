@@ -15,6 +15,7 @@ class ProductoresController extends Controller
     public function index()
     {
         //
+        dd("pro");
     }
 
     /**
@@ -25,6 +26,7 @@ class ProductoresController extends Controller
     public function create()
     {
         //
+        
     }
 
     /**

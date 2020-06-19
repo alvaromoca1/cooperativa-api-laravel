@@ -15,6 +15,7 @@ class CooperativasController extends Controller
     public function index()
     {
         //
+        dd("coo");
     }
 
     /**
