@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use App\cooperativas;
 use App\Productores;
 use Illuminate\Http\Request;
+use DateTime;
 
 class CooperativasController extends Controller
 {
@@ -16,7 +17,7 @@ class CooperativasController extends Controller
     public function index()
     {
         $cooperativas = cooperativas::all();
-        return $cooperativas;
+        return response()->json($cooperativas);
     }
 
     /**
@@ -30,10 +31,11 @@ class CooperativasController extends Controller
      */
     public function store(Request $request)
     {
+        $date = new DateTime(); 
         $cooperativa=new cooperativas();
 
         $cooperativa->nombre = $request->nombre;
-        $cooperativa->fecha = $request->fecha;
+        $cooperativa->fecha = $date->format('d-m-Y');
         $cooperativa->id_pro_lider=$request->id_pro_lider;
 
         $cooperativa->save();
